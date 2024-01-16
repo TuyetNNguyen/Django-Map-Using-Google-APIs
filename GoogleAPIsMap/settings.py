@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'GoogleAPIsMap.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -82,7 +80,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -102,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -114,7 +110,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -124,7 +119,7 @@ STATICFILES_DIRS = [
 ]
 
 # This sets the URL for static files to 'static/'
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # This is the root directory where Django will collect static files during deployment
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
@@ -138,8 +133,13 @@ RECAPTCHA_KEY = "6LeIX08pAAAAAMYqRl8zjSEDDzj2LMkVIw6AUt3j"
 # This is the secret key for reCAPTCHA, used for additional security
 RECAPTCHA_SECRET_KEY = "6LeIX08pAAAAAOYY642d7L08Xesi3FCF4GvCkGOV"
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'users:sign-in'
+LOGIN_REDIRECT_URL = 'users:account'
+LOGOUT_REDIRECT_URL = 'users:sign-in'
+
+BASE_COUNTRY = "US"
